@@ -17,8 +17,7 @@ const Pharmacy = () => {
     return (
         <>
             <section>
-                <p>{ fullDay } </p>
-                <p>Las farmacias con la letra: { letra }</p>
+                <p>Los turnos comienzan a las 8am del día {fullDay} hasta las 8 am del día siguiente</p>
             </section>
             <ListPharmacys value={ letra } /> 
             

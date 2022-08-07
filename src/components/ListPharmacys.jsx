@@ -2,18 +2,19 @@ import { useEffect, useState } from "react";
 import { getData, getDataByLetter} from '../database/API';
 import Pharmacys24Open from "./Pharmacys24Open";
 import PharmacysOpen from "./PharmacysOpen";
+import { MapList } from './MapList'
 
 const ListPharmacys = ( { value } ) => {
 
     const [pharmacys, setPharmacys] = useState([]);
     useEffect( () => {
-        // getData()
         getDataByLetter(value)
             .then( pharmacysOpen => setPharmacys(pharmacysOpen));
     }, [])
 
     return (
         <>
+            <MapList className='leaflet-container' { ...pharmacys }/>
             <div className='card-grid'>
                 {
                 pharmacys.map( ( pharmacys ) => (
