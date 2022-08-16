@@ -2,20 +2,19 @@ import React from "react";
 import ListPharmacys from "./ListPharmacys";
 
 const Pharmacy = () => {
+    
     const letras = ['N', 'O', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
     const inicialDate = new Date(2022, 0, 1);
     let date = new Date();
-    let day = date.getDay();
-    let month = date.getMonth();
+    let day = date.getDate();
+    let month = date.getMonth() +1;
     let year = date.getFullYear();
     let fullDay = `${day}/${month}/${year}`;
+    
     const difference = date.getTime() - inicialDate.getTime();
     const totalDays = Math.ceil(difference / (1000 * 3600 * 24)) -1;
     const index = totalDays % 15;
     const letra = letras[index];
-    console.log(new Date());
-    console.log(fullDay);
-
 
     return (
         <>
