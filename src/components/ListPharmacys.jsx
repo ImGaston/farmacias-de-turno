@@ -7,14 +7,15 @@ import { MapList } from './MapList'
 const ListPharmacys = ( { value } ) => {
 
     const [pharmacys, setPharmacys] = useState([]);
+    
     useEffect( () => {
         getDataByLetter(value)
             .then( pharmacysOpen => setPharmacys(pharmacysOpen));
     }, [])
-
+    
     return (
         <>
-            <MapList className='leaflet-container' { ...pharmacys }/>
+            <MapList className='leaflet-container' farmacias={pharmacys}/>
             <div className='card-grid'>
                 {
                 pharmacys.map( ( pharmacys ) => (
