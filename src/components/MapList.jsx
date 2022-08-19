@@ -1,9 +1,12 @@
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { Icon } from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
+import useSWR from 'swr';
+import icon from '/marker.png';
+import 'leaflet/dist/leaflet.css';
+import { Markers } from './Markers';
 
 //TODO: map con el Maker para las farmacias de turno
+
 
 export const MapList = ({ farmacias }) => {
     
@@ -11,8 +14,6 @@ export const MapList = ({ farmacias }) => {
         iconUrl: icon
     });
 
-    console.log(farmacias.map(( farmacias ) => (console.log(farmacias.coordenadas))));
-    
     return (
         <MapContainer center={[-34.54806386957799, -58.696168008616304]} zoom={13} scrollWheelZoom={false}>
             <TileLayer
@@ -25,23 +26,13 @@ export const MapList = ({ farmacias }) => {
                 <a target='_blank' href={'http://www.google.com/maps/place/-34.53932470845837,-58.71547600632928'}>Google Maps</a>
                 </Popup>
             </Marker>
-            {
-                console.log('Cargando mapa')
-            }
             <Marker position={[-34.55191851064897,-58.722759431276124]} icon={ IconMarker }>
                 <Popup>
                 <p>Farmacia Gaspar Campos | abierta 24hrs</p>
                 <a target='_blank' href={'http://www.google.com/maps/place/-34.55191851064897,-58.722759431276124'}>Google Maps</a>
                 </Popup>
             </Marker>
-            {/* <MultipleMarkers farmacias={farmacias}/> */}
-            {/* {
-                farmacias.map((farmacias) => (
-                    <Marker key={farmacias.id} position={farmacias.coordenadas} icon={IconMarker}>
-
-                    </Marker>
-                ))
-            } */}
+            <Markers farmacias={ farmacias }/>
         </MapContainer>
     )
 }
