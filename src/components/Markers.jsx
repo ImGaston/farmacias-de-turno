@@ -10,8 +10,6 @@ export const Markers = ({ farmacias }) => {
         iconUrl: icon
     });
 
-    console.log(farmacias)
-
     return (
         <>
             {
